@@ -1,19 +1,23 @@
-<h1>Rotten Mangoes</h1>
+<h1>Admin page</h1>
 <%= link_to "Go back", movies_path %>
 
 
 <hr>
 <small>
   <% @users.each do |user| %>
-  
-  <h2>First name: <%= user.firstname %> <h2><br>
-  <h3>Last name: <%=user.lastname %></h3><br>
-  <h2>email: <%= user.email %> <h2><br>
-  <h3>User Admin: <%=user.lastname %></h3><br>
-  <h2>Password: <%= user.password_digest %> <h2><br>
-  <h2>Created at: <%= user.created_at %> <h2><br>
-  <h3>Last update: <%=user.updated_at %></h3><br>
-  
+
+  <%= link_to user.firstname, admin_user_path(user) %>
+  <h3>Last name: <%=user.lastname %></h3>
+  <h4>email: <%= user.email %> <h4>
+  <% if user.admin %>
+    <h4>User type: Admin</h4>
+  <% else %>
+    <h4>User type: User </h4>
+  <% end %>
+  <h4>Password: <%= user.password_digest %> <h4>
+  <h5>Created at: <%= user.created_at %> <h5>
+  <h5>Last update: <%=user.updated_at %></h5>
+  <%= link_to "Create new user", new_admin_user_path %>  
 <hr>
 <% end %>
 </small>
