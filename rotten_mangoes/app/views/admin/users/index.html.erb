@@ -1,0 +1,19 @@
+<h1>Rotten Mangoes</h1>
+<%= link_to "Go back", movies_path %>
+
+
+<hr>
+<small>
+  <% @users.each do |user| %>
+  
+  <h2>First name: <%= user.firstname %> <h2><br>
+  <h3>Last name: <%=user.lastname %></h3><br>
+  <h2>email: <%= user.email %> <h2><br>
+  <h3>User Admin: <%=user.lastname %></h3><br>
+  <h2>Password: <%= user.password_digest %> <h2><br>
+  <h2>Created at: <%= user.created_at %> <h2><br>
+  <h3>Last update: <%=user.updated_at %></h3><br>
+  
+<hr>
+<% end %>
+</small>
