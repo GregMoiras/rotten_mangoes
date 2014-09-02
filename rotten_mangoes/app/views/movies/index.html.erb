@@ -3,13 +3,7 @@
 
 <hr>
 <% @movies.each do |movie| %>
-  <div class="movie_image">
-    <% if movie.image %> 
-      <%= link_to image_tag(movie.image), movie_path(movie) %>
-    <% else %>
-      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-    <% end %>
-  </div>
+  <%= render "poster_image", movie: movie %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
 
   <h2>Avg.reviews: <%= movie.review_average %>/10 <h2>
