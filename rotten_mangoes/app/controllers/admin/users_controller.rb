@@ -69,10 +69,7 @@ class Admin::UsersController < ApplicationController
   private
   
   def must_be_admin
-    if current_user
-      @user = User.find(session[:user_id])
-      redirect_to movies_path, notice: "This page is accessible only by Admins #{@user.firstname}!" unless @user.admin == true
-    end
+    redirect_to movies_path, notice: "This page is accessible only by Admins #{current_user.firstname}!" unless current_user.admin == true
   end
 
   def user_params
