@@ -1,10 +1,6 @@
 
 class UsersController < ApplicationController
 
-  # def index
-
-  # end
-  
   def new
     @user = User.new
   end
@@ -19,6 +15,10 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @movie = User.find(params[:id])  
   end
 
   protected

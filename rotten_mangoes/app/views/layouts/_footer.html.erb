@@ -5,7 +5,9 @@
          Signed in as Admin: <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
            <%= link_to "Admin page", admin_users_path %> 
       <% else %>
-        Signed in as User <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>) 
+        Signed in as User: <%= current_user.full_name %> 
+        (<%= link_to "Profile", user_path(current_user) %>)
+        (<%= link_to "Log out", session_path("current"), method: :delete %>) 
         <% end %> 
     <% else %>
       <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
