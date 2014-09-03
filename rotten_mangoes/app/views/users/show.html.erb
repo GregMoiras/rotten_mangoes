@@ -1,8 +1,13 @@
-<%= link_to "Back to movie", movies_path %><br/>
+<%= link_to "Back to movies", movies_path %><br/>
 
 
 
-  <h4>First name: <%= @user.firstname %> <h4>
-  <h4>Last name: <%= @user.lastname %></h4>
-  <h4>email: <%= @user.email %> <h4>
-  <h4>Reviews: <%= @user.review.text%> <h4>
+  <h4>First name: <%= current_user.firstname %> <h4>
+  <h4>Last name: <%= current_user.lastname %></h4>
+  <h4>email: <%= current_user.email %> <h4>
+
+  <h4>Reviews: <% current_user.reviews.each do |review|%> <h4>
+  <h4><%= link_to review.movie.title, movie_path(review.movie) %> </h4>
+  <h5>Review: <%= review.text %></h5>
+  <% end %>
+

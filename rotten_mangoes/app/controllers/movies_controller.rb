@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   
 
   def index
-  
+
     if params[:search] || params[:time]
       search = params[:search]
       @time = params[:time]

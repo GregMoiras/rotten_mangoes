@@ -1,5 +1,5 @@
 
-<%= form_for [:admin, @user] do |f| %>
+<%= form_for [:admin, @user do |f| %>
   <% if @user.errors.any? %>
     <div>
       <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
