@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :must_be_admin
+  before_action :must_be_admin, except: [:switch_back]
 
   def index
     @users = User.all
@@ -42,7 +42,6 @@ class Admin::UsersController < ApplicationController
     
     @user = User.find(params[:id])
     if @user
-      #binding.pry
       respond_to do |format|
         UserMailer.delete_user_email(@user)
         format.html { redirect_to(admin_users_path, notice: 'User was successfully deleted.') }
@@ -51,6 +50,20 @@ class Admin::UsersController < ApplicationController
     else
       redirect_to admin_users_path
     end
+  end
+
+  def switch_to
+    session[:admin_user] = current_user.id 
+    @switch_user = User.find(params[:id])
+    session[:user_id] = @switch_user.id
+    redirect_to movies_path, notice: "Switched to #{@switch_user.firstname} #{@switch_user.lastname}'s RottenMangoes Page!"
+  end
+
+  def switch_back
+    id = session[:admin_user]
+    session[:user_id] = id
+    session[:admin_user] = nil
+    redirect_to admin_users_path, notice: "Switched back to admin page."
   end
 
   private

@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user
+  def admin_user_exists?
+    session[:admin_user] != nil #must exist // change name of session to admin_user_id
+  end
+
+  def admin_id_when_impersonating
+    @hidden_id ||= User.find(session[:admin_user]) if session[:admin_user] 
+  end
+
+  helper_method :current_user, :admin_user_exists?, :admin_id_when_impersonating
 
 end

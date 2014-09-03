@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    post 'users/:id/switch_to' => 'users#switch_to', as: "switch_to"
+    post 'users/switch_back' => 'users#switch_back', as: "switch_back"
   end
   resources :users, only: [:new, :create, :show]
 
