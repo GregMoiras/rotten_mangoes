@@ -7,8 +7,8 @@
 
   <%= label_tag(:search, "Search for movie title or director:") %>
   <%= text_field_tag(:search) %>
-  <%= label_tag(:runtime_in_minutes, "Duration (in minutes)") %>
-  <%= select_tag :runtime_in_minutes, options_for_select(%w(all <90 90-120 >120)) %>
+  <%= label_tag(:time, "Duration (in minutes)") %>
+  <%= select_tag :time, options_for_select(%w(all <90 90-120 >120)) %>
 
   <%= submit_tag("Search") %>
 <% end %>

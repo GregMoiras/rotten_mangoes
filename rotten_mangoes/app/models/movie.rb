@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
-  scope :title?, -> (title) { where(['title like ?', "%#{title}%"]) }
-  scope :director?, -> (director) { where(['director like ?', "%#{director}%"]) }
+  scope :search, -> (query) { where(['title like ? or director like ?', "%#{query}%", "%#{query}%"]) }
+
 
   has_many :reviews
   mount_uploader :image, ImageUploader
