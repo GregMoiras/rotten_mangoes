@@ -1,8 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    if params[:search]
+    if params[:search] || params[:runtime_in_minutes]
       search = params[:search]
-      @movies = Movie.where("title like '%#{search}%' or director like '%#{search}%'")
+      @time = params[:runtime_in_minutes]
+      @movies = Movie.where("title like '%#{search}%' or director like '%#{search}%' ")
+      runtime_search
     else
       @movies = Movie.all
     end
@@ -47,6 +49,19 @@ class MoviesController < ApplicationController
   end
 
   protected
+
+  def runtime_search
+    case @time 
+    when "all"
+    @movies 
+    when "<90"
+    @movies = @movies = @movies.where("runtime_in_minutes BETWEEN 0 AND 90") 
+    when "90-120"
+    @movies = @movies = @movies = @movies.where("runtime_in_minutes BETWEEN 90 AND 120") 
+    when ">120"
+    @movies = @movies = @movies = @movies.where("runtime_in_minutes BETWEEN 120 AND 1000")   
+    end
+  end
 
   def movie_params
     params.require(:movie).permit(:title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :image)
