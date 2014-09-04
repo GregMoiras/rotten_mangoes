@@ -1,4 +1,5 @@
 <h1>Rotten Mangoes</h1>
+
 <%= link_to "Submit a movie!", new_movie_path %><br>
 <%= link_to "Back to movies!", movies_path %>
 <hr>
@@ -9,8 +10,8 @@
   <%= text_field_tag(:search) %>
   <%= label_tag(:time, "Duration (in minutes)") %>
   <%= select_tag :time, options_for_select(%w(all <90 90-120 >120)) %>
-
   <%= submit_tag("Search") %>
+
 <% end %>
 
 <hr>

@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :must_be_admin, except: [:switch_back]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show

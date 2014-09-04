@@ -1,7 +1,7 @@
 <h1>Admin page</h1>
 <%= link_to "Go back", movies_path %>
 
-
+<%= paginate @users %>
 <hr>
 <small>
   <% @users.each do |user| %>
