@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :must_be_admin, except: [:switch_back]
+  before_action :must_be_admin , except: [:switch_back]
 
   def index
     @users = User.all.page(params[:page]).per(10)
@@ -53,15 +53,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def switch_to
-    session[:admin_user] = current_user.id 
+    session[:admin_user] = current_user.id if current_user.admin
     @switch_user = User.find(params[:id])
     session[:user_id] = @switch_user.id
     redirect_to movies_path, notice: "Switched to #{@switch_user.firstname} #{@switch_user.lastname}'s RottenMangoes Page!"
   end
 
   def switch_back
-    id = session[:admin_user]
-    session[:user_id] = id
+    session[:user_id] = session[:admin_user]
     session[:admin_user] = nil
     redirect_to admin_users_path, notice: "Switched back to admin page."
   end
@@ -69,7 +68,7 @@ class Admin::UsersController < ApplicationController
   private
   
   def must_be_admin
-    redirect_to movies_path, notice: "This page is accessible only by Admins #{current_user.firstname}!" unless current_user.admin == true
+    redirect_to movies_path, notice: "This page is accessible only by Admins #{current_user.firstname}!" unless current_user.admin == true #|| User.find(session[:admin_user]).admin == true
   end
 
   def user_params

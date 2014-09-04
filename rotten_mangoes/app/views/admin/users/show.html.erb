@@ -3,7 +3,13 @@
 <%= debug session[:user_id] %>
 <%= debug session[:admin_user] %>
 
-<h5>(<%= link_to "edit", edit_admin_user_path(@user) %>, <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %>), (<%= link_to "Impersonate", admin_switch_to_path(@user), method: :post %> )</h5>
+<h5>(<%= link_to "edit", edit_admin_user_path(@user) %>, <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %>), 
+
+<% if !@user.admin %>
+  (<%= link_to "Impersonate", admin_switch_to_path(@user), method: :post %> )
+<% end %>
+
+</h5>
   <h4>First name: <%= @user.firstname %> <h4>
   <h4>Last name: <%= @user.lastname %></h4>
   <h4>email: <%= @user.email %> <h4>

@@ -4,9 +4,10 @@
 
 <%= debug session[:user_id] %>
 <%= debug session[:admin_user] %>
+<%= debug admin_user_exists?%>
 
 <h2><%= @movie.title %> 
-  <% if session[:admin_user] %>
+  <% if admin? %>
     (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)
   <% end %>
 </h2>
