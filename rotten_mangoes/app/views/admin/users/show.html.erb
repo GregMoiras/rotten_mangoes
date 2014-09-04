@@ -1,8 +1,5 @@
 <%= link_to "Back to all users", admin_users_path %><br/>
 
-<%= debug session[:user_id] %>
-<%= debug session[:admin_user] %>
-
 <h5>(<%= link_to "edit", edit_admin_user_path(@user) %>, <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %>), 
 
 <% if !@user.admin %>

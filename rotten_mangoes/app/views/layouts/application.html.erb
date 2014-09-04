@@ -12,10 +12,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value) %>
-  <% end %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
+  <div id="main-container" class="container">
+    <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value) %>
+    <% end %>
+    <%= yield %>
+    </div>
 </body>
 </html>

@@ -1,6 +1,10 @@
 class Admin::UsersController < ApplicationController
 
+    # before_action :must_be_user 
   before_action :must_be_admin , except: [:switch_back]
+
+
+
 
   def index
     @users = User.all.page(params[:page]).per(10)

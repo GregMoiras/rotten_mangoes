@@ -2,9 +2,6 @@
 
 <%= render "poster_image", movie: @movie %>
 
-<%= debug session[:user_id] %>
-<%= debug session[:admin_user] %>
-<%= debug admin_user_exists?%>
 
 <h2><%= @movie.title %> 
   <% if admin? %>

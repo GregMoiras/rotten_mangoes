@@ -1,7 +1,7 @@
-<footer>
+<header>
+  <h1><%= link_to "Rotten Mangoes", movies_path %></h1>
   <small>
-    <%= debug session[:user_id] %>
-    <%= debug session[:admin_user] %>
+ 
 
     <% if current_user %>
 
@@ -29,4 +29,4 @@
       <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
     <% end %>
   </small>
-</footer>
+</header>
