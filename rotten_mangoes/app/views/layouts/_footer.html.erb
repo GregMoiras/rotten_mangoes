@@ -7,14 +7,14 @@
 
       <% if current_user.admin %>
         Signed in as Admin: <%= current_user.full_name %>
-        (<%= link_to "Log out", session_path("current"), method: :delete %>)
+        (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
         <%= link_to "Admin page", admin_users_path %> 
       
         
       <% elsif admin_user_exists? %>
         Signed in as Admin: (<%= admin_id_when_impersonating.full_name %>) 
         Impersonating: (<%= current_user.full_name %>)
-          (<%= link_to "Log out", session_path("current"), method: :delete %>)
+          (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
         <%= link_to "Admin page", admin_users_path %> 
         <%= link_to "Go back to admin status", admin_switch_back_path, method: :post %>
       
@@ -22,7 +22,7 @@
       <% else %>
         Signed in as User: <%= current_user.full_name %> 
         (<%= link_to "Profile", user_path(current_user) %>)
-        (<%= link_to "Log out", session_path("current"), method: :delete %>) 
+        (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>) 
       <% end %> 
 
     <% else %>
