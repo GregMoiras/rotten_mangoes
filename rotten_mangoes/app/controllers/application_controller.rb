@@ -21,13 +21,17 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    true if current_user.admin
+    current_user.admin if current_user
   end
 
   def admin_id_when_impersonating
     @hidden_id ||= User.find(session[:admin_user]) if session[:admin_user] 
   end
 
-  helper_method :current_user, :admin_user_exists?, :admin_id_when_impersonating, :admin?
+  def must_be_admin
+    redirect_to movies_path, notice: "This page is accessible only by Admins #{current_user.firstname}!" unless current_user.admin == true #|| User.find(session[:admin_user]).admin == true
+  end
+
+  helper_method :current_user, :admin_user_exists?, :admin_id_when_impersonating, :admin?, :must_be_admin
 
 end

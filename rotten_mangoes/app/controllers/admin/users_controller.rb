@@ -1,10 +1,7 @@
 class Admin::UsersController < ApplicationController
 
-    # before_action :must_be_user 
+  before_filter :restrict_access
   before_action :must_be_admin , except: [:switch_back]
-
-
-
 
   def index
     @users = User.all.page(params[:page]).per(10)
@@ -70,10 +67,6 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  
-  def must_be_admin
-    redirect_to movies_path, notice: "This page is accessible only by Admins #{current_user.firstname}!" unless current_user.admin == true #|| User.find(session[:admin_user]).admin == true
-  end
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)

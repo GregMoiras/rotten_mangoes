@@ -4,6 +4,7 @@
 
 
 <h2><%= @movie.title %> 
+
   <% if admin? %>
     (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)
   <% end %>

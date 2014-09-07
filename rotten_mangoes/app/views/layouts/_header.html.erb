@@ -1,32 +1,34 @@
-<header>
-  <h1><%= link_to "Rotten Mangoes", movies_path %></h1>
-  <small>
- 
 
-    <% if current_user %>
+  
 
-      <% if current_user.admin %>
-        Signed in as Admin: <%= current_user.full_name %>
-        (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
-        <%= link_to "Admin page", admin_users_path %> 
-      
-        
-      <% elsif admin_user_exists? %>
-        Signed in as Admin: (<%= admin_id_when_impersonating.full_name %>) 
-        Impersonating: (<%= current_user.full_name %>)
-          (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
-        <%= link_to "Admin page", admin_users_path %> 
-        <%= link_to "Go back to admin status", admin_switch_back_path, method: :post %>
-      
+<small class="signed_in_bar">
 
-      <% else %>
-        Signed in as User: <%= current_user.full_name %> 
-        (<%= link_to "Profile", user_path(current_user) %>)
-        (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>) 
-      <% end %> 
+<% if current_user %>
 
-    <% else %>
-      <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
-    <% end %>
-  </small>
-</header>
+  <% if current_user.admin %>
+    Signed in as Admin: <%= current_user.full_name %>
+    (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
+    <%= link_to "Admin page", admin_users_path %> 
+  
+    
+  <% elsif admin_user_exists? %>
+    Signed in as Admin: (<%= admin_id_when_impersonating.full_name %>) 
+    Impersonating: (<%= current_user.full_name %>)
+      (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>)
+    <%= link_to "Admin page", admin_users_path %> 
+    <%= link_to "Go back to admin status", admin_switch_back_path, method: :post %>
+  
+
+  <% else %>
+    Signed in as User: <%= current_user.full_name %> 
+    (<%= link_to "Profile", user_path(current_user) %>)
+    (<%= link_to "Log out", {controller: "/sessions", action: "destroy"}, method: :delete %>) 
+  <% end %> 
+
+<% else %>
+  <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+<% end %>
+</small>
+
+
+<h1><%= link_to "Rotten Mangoes", movies_path %></h1>

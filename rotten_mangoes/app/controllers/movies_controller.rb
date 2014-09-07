@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController  
-  
+  before_filter :restrict_access, :except => [:index]
 
   def index
 
