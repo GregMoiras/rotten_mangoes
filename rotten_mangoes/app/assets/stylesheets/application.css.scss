@@ -85,7 +85,7 @@ text-decoration: none;
   padding-right:5px; 
 }
 
-input, button, select, textarea { /*repetition fix this */
+select#time{ /*repetition fix this */
   height: 50px;
   width: 100px;
   border: 1px solid #ccc;
@@ -100,5 +100,7 @@ input, button, select, textarea { /*repetition fix this */
   color: white;
 }
 
-
+.movie_submit {
+  width: 100px;
+}
 

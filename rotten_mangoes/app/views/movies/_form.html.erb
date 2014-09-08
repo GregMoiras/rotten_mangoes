@@ -11,36 +11,49 @@
     </div>
   <% end %>
 
+  <div class="form-group">
   <div>
-    <%= f.label "title" %><br>
-    <%= f.text_field "title" %>
+    <%= f.label "title", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "title", class: "form-control"  %>
   </div>
   <div>
-    <%= f.label "release_date" %><br>
-    <%= f.date_field "release_date" %>
+    <%= f.label "release_date", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.date_field "release_date", class: "form-control" %>
   </div>
   <div>
-    <%= f.label "director" %><br>
-    <%= f.text_field "director" %>
+    <%= f.label "director", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "director", class: "form-control" %>
   </div>
   <div>
-    <%= f.label "runtime_in_minutes" %><br>
-    <%= f.number_field "runtime_in_minutes" %>
+    <%= f.label "runtime_in_minutes", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8"> 
+    <%= f.number_field "runtime_in_minutes", class: "form-control" %>
   </div>
   <div>
-    <%= f.label "poster_image_url" %><br>
-    <%= f.text_field "poster_image_url" %>
+    <%= f.label "poster_image_url", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "poster_image_url", class: "form-control" %>
   </div>
   <div>
-    <%= f.label "image" %><br>
-    <%= f.file_field "image" %><br>
+    <%= f.label "image", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8">  
+    <%= f.file_field "image", class: "form-control" %><br>
   </div>
   <div>
-    <%= f.label "description" %><br>
-    <%= f.text_area "description" %>
+    <%= f.label "description", class: "col-md-4  control-label" %><br>
   </div>
-  <div>
-    <%= f.submit "Submit" %> 
+  <div class="col-md-8"> 
+    <%= f.text_area "description", class: "form-control" %>
   </div>
-  
+  <div class="col-md-4"><%= f.submit "Submit", class: "btn btn-default btn-primary" %></div>
+  </div>  
 <% end %>
