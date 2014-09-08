@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController  
   before_filter :restrict_access, :except => [:index]
 
+
   def index
 
     if params[:search] || params[:time]
@@ -57,7 +58,7 @@ class MoviesController < ApplicationController
 
   def runtime_search
     case @time 
-    when "all"
+    when "all" || "duration"
     @movies 
     when "<90"
     @movies = @movies = @movies.where("runtime_in_minutes BETWEEN 0 AND 90") 
