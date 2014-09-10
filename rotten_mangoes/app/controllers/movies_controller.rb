@@ -5,7 +5,6 @@ class MoviesController < ApplicationController
   def index
 
     if params[:search] || params[:time]
-      search = params[:search]
       @time = params[:time]
       @movies = Movie.search(params[:search])
       #Same as above -> @movies = Movie.where("title like '%#{search}%' or director like '%#{search}%' ")
@@ -59,7 +58,7 @@ class MoviesController < ApplicationController
   def runtime_search
     case @time 
     when "all" || "duration"
-    @movies 
+    @movies = @movies = Movie.search(params[:search])
     when "<90"
     @movies = @movies = @movies.where("runtime_in_minutes BETWEEN 0 AND 90") 
     when "90-120"

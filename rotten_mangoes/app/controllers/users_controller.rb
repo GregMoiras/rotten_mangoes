@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(user_params)
 
     if @user.save
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    
     @movie = User.find(params[:id])  
   end
 

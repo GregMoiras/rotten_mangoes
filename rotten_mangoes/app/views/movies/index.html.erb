@@ -4,11 +4,12 @@
 
 <hr>
 
-  <% @movies.each do |movie| %>
-    <div class ="row" class="movies-index">
-    <div class="col-md-4"><%= render "poster_image", movie: movie %></div>
-    <div class="col-md-8"><%= render "movie", movie: movie %></div>
-    </div>
-  <% end %>
+<% @movies.each do |movie| %>
+  <div class ="row movies-index">
+  
+  <div class="col-md-4"><%= render "poster_image", movie: movie %></div>
+  <div class="col-md-8"><%= render "movie", movie: movie %></div>
 
+  </div>
+<% end %>
 

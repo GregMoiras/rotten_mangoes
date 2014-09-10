@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
 
   def restrict_access
     if !current_user
-      flash[:alert] = "You must log in."
-      redirect_to new_session_path
+      redirect_to new_session_path, flash:{alert: "You must log in."}
     end
   end
 
@@ -26,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   def admin_id_when_impersonating
     @hidden_id ||= User.find(session[:admin_user]) if session[:admin_user] 
+  end
+
+  def login_user(user)
+    session[:user_id] = user.id
   end
 
   def must_be_admin

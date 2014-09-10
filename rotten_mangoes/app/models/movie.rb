@@ -13,14 +13,14 @@ class Movie < ActiveRecord::Base
   validates :release_date, presence: true
   validate :release_date_is_in_the_future
 
-  before_validation :check
+  # before_validation :check # check if i need check method and the validation
 
-  def check
-    self.image.path
-  end
+  # def check
+  #   self.image.path 
+  # end
   
   def review_average
-    if self.reviews.size > 0
+    if self.reviews.size > 0 #check if i can use exist method 
       self.reviews.sum(:rating_out_of_ten)/reviews.size
     else
       0
@@ -30,8 +30,8 @@ class Movie < ActiveRecord::Base
   protected
 
   def release_date_is_in_the_future
-    if release_date.present?
-      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+    if self.release_date.past? 
+      errors.add(:release_date, "should probably be in the future") 
     end
   end
 
