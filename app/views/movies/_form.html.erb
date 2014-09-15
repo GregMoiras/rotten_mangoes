@@ -1,0 +1,59 @@
+<%= form_for @movie, html: { multipart: true }  do |f| %>
+
+  <% if @movie.errors.any? %>
+    <div>
+      <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+  <div>
+    <%= f.label "title", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "title", class: "form-control"  %>
+  </div>
+  <div>
+    <%= f.label "release_date", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.date_field "release_date", class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label "director", class: "col-md-4  control-label" %>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "director", class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label "runtime_in_minutes", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8"> 
+    <%= f.number_field "runtime_in_minutes", class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label "poster_image_url", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8">
+    <%= f.text_field "poster_image_url", class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label "image", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8">  
+    <%= f.file_field "image", class: "form-control" %><br>
+  </div>
+  <div>
+    <%= f.label "description", class: "col-md-4  control-label" %><br>
+  </div>
+  <div class="col-md-8"> 
+    <%= f.text_area "description", class: "form-control" %>
+  </div>
+  <div class="col-md-4"><%= f.submit "Submit", class: "btn btn-default btn-primary" %></div>
+  </div>  
+<% end %>

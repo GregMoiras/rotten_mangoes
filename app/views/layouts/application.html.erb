@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RottenMangoes</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascript/application.js"></script>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="header" class="container_fluid"><%= render 'layouts/header' %></div>
+  <%= render 'layouts/hero_section' if current_page?('/') %>
+  <div id="main-container" class="container">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value) %>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>
+

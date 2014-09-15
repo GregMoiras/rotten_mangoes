@@ -1,0 +1,15 @@
+
+
+<%= link_to "Submit a movie!", new_movie_path %><br>
+
+<hr>
+
+<% @movies.each do |movie| %>
+  <div class ="row movies-index">
+  
+  <div class="col-md-4"><%= render "poster_image", movie: movie %></div>
+  <div class="col-md-8"><%= render "movie", movie: movie %></div>
+
+  </div>
+<% end %>
+

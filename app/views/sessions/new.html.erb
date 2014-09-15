@@ -1,0 +1,22 @@
+<%= link_to "Back to movies", movies_path %>
+
+<h1>Log In</h1>
+
+  <%= form_tag session_path do %>
+  <div class="form-group">
+  <div>
+    <%= label_tag "email" %><br/>
+  </div>
+  <div>
+    <%= text_field_tag "email" %>
+  </div>
+  <div>
+    <%= label_tag :password %><br/>
+  </div>
+  <div>  
+    <%= password_field_tag :password %>
+  </div>
+  <div class="col-md-4"><%= submit_tag "Log In", class: "btn btn-default btn-primary" %>
+  </div>
+  </div>
+<% end %>
